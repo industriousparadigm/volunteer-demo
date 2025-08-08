@@ -8,6 +8,7 @@ function AudioController() {
   const [isPaused, setIsPaused] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [isHoveringBottom, setIsHoveringBottom] = useState(false)
+  const [showCopied, setShowCopied] = useState(false)
   const { hasStarted, setHasStarted } = usePlayback()
   const audioRef = useRef(null)
   const navigate = useNavigate()
@@ -97,6 +98,14 @@ function AudioController() {
     const newMutedState = !isMuted
     setIsMuted(newMutedState)
     audioRef.current.volume = newMutedState ? 0 : 0.8
+  }
+
+  const handleShare = () => {
+    const baseUrl = window.location.origin
+    navigator.clipboard.writeText(baseUrl).then(() => {
+      setShowCopied(true)
+      setTimeout(() => setShowCopied(false), 2000)
+    })
   }
 
   // Listen for when we reach slide 9 to show restart button
@@ -211,6 +220,41 @@ function AudioController() {
           >
             Restart
           </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* Share button */}
+      <AnimatePresence>
+        {isHoveringBottom && (
+          <motion.button
+            onClick={handleShare}
+            className={`fixed bottom-8 right-8 z-40 px-4 py-2 rounded-lg backdrop-blur-sm transition-all ${
+              isDarkSlide
+                ? 'bg-white/10 hover:bg-white/20 text-white/70 hover:text-white'
+                : 'bg-gray-900/10 hover:bg-gray-900/20 text-gray-900/70 hover:text-gray-900'
+            }`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            Share
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* Copied popup */}
+      <AnimatePresence>
+        {showCopied && (
+          <motion.div
+            className="fixed bottom-20 right-8 z-50 px-3 py-2 bg-green-500 text-white rounded-lg shadow-lg"
+            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.9 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            Copied to clipboard!
+          </motion.div>
         )}
       </AnimatePresence>
     </>
