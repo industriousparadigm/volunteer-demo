@@ -123,28 +123,28 @@ function Frame9() {
                 2011
               </motion.div>
               
-              {/* Blue Pill - MUCH larger */}
+              {/* Blue Pill - reduced size */}
               <motion.div
                 className="relative"
-                initial={{ width: '60px' }}
+                initial={{ width: '50px' }}
                 animate={animationPhase === 'animate' ? { 
-                  width: '85%' 
-                } : { width: '60px' }}
+                  width: '68%' 
+                } : { width: '50px' }}
                 transition={{ 
                   duration: 1.5, 
                   ease: [0.43, 0.13, 0.23, 0.96],
                   delay: 0.5
                 }}
               >
-                <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-full h-40 shadow-lg flex items-center justify-center overflow-hidden">
+                <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-full h-32 shadow-lg flex items-center justify-center overflow-hidden">
                   <motion.div 
-                    className="flex flex-col items-center justify-center text-white font-display font-bold px-10"
+                    className="flex flex-col items-center justify-center text-white font-display font-bold px-8"
                     initial={{ opacity: 0 }}
                     animate={animationPhase === 'animate' ? { opacity: 1 } : {}}
                     transition={{ duration: 0.5, delay: 1.8 }}
                   >
-                    <div className="text-5xl font-extrabold">4 hrs</div>
-                    <div className="text-4xl mt-2 font-bold">$300M</div>
+                    <div className="text-4xl font-extrabold">4 hrs</div>
+                    <div className="text-3xl mt-1 font-bold">$300M</div>
                   </motion.div>
                 </div>
               </motion.div>
@@ -162,28 +162,28 @@ function Frame9() {
                 2025
               </motion.div>
               
-              {/* Red Pill - MUCH larger */}
+              {/* Red Pill - reduced size */}
               <motion.div
                 className="relative"
-                initial={{ width: '60px' }}
+                initial={{ width: '50px' }}
                 animate={animationPhase === 'animate' ? { 
-                  width: '100%' 
-                } : { width: '60px' }}
+                  width: '80%' 
+                } : { width: '50px' }}
                 transition={{ 
                   duration: 1.5, 
                   ease: [0.43, 0.13, 0.23, 0.96],
                   delay: 2.0  // 1.5s after beige pill starts (0.5 + 1.5)
                 }}
               >
-                <div className="bg-gradient-to-r from-red-600 to-red-500 rounded-full h-48 shadow-lg flex items-center justify-center overflow-hidden">
+                <div className="bg-gradient-to-r from-red-600 to-red-500 rounded-full h-38 shadow-lg flex items-center justify-center overflow-hidden" style={{ height: '9.5rem' }}>
                   <motion.div 
-                    className="flex flex-col items-center justify-center text-white font-display font-bold px-12"
+                    className="flex flex-col items-center justify-center text-white font-display font-bold px-10"
                     initial={{ opacity: 0 }}
                     animate={animationPhase === 'animate' ? { opacity: 1 } : {}}
                     transition={{ duration: 0.5, delay: 3.3 }}
                   >
-                    <div className="text-6xl font-extrabold">180 hrs</div>
-                    <div className="text-5xl mt-2 font-bold">$13.5B**</div>
+                    <div className="text-5xl font-extrabold">180 hrs</div>
+                    <div className="text-4xl mt-1 font-bold">$13.5B**</div>
                   </motion.div>
                 </div>
               </motion.div>
@@ -234,14 +234,14 @@ function Frame9() {
               </motion.h3>
             </div>
 
-            {/* Pie chart - BIGGER */}
+            {/* Pie chart - reduced size */}
             <motion.div
               className="relative"
               initial={{ scale: 0, rotate: -180 }}
               animate={animationPhase === 'animate' ? { scale: 1, rotate: 0 } : {}}
               transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96], delay: 4.8 }}
             >
-            <svg width="500" height="500" viewBox="0 0 500 500">
+            <svg width="400" height="400" viewBox="0 0 500 500">
               {slices.map((slice, index) => (
                 <motion.path
                   key={index}

@@ -90,7 +90,10 @@ function AudioController() {
     setIsPlaying(false)
     setIsPaused(false)
     setHasStarted(false)
-    navigate('/1')
+    // Only navigate if not already on slide 1
+    if (location.pathname !== '/1') {
+      navigate('/1')
+    }
   }
 
   const toggleMute = () => {
