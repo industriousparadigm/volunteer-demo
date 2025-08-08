@@ -115,7 +115,7 @@ function AudioController() {
         preload="auto"
       />
       <AnimatePresence>
-        {isHoveringBottom && !hasStarted && !isPaused && !isOnSlide9 && (
+        {(isHoveringBottom || !hasStarted) && !hasStarted && !isPaused && !isOnSlide9 && (
           <motion.button
             onClick={handleStart}
             className={`fixed bottom-8 left-8 z-40 px-4 py-2 rounded-lg backdrop-blur-sm transition-all ${
@@ -134,7 +134,7 @@ function AudioController() {
       </AnimatePresence>
       
       <AnimatePresence>
-        {isHoveringBottom && (hasStarted || isPaused) && !isOnSlide9 && (
+        {(isHoveringBottom || isPaused) && (hasStarted || isPaused) && !isOnSlide9 && (
           <motion.div 
             className="fixed bottom-8 left-8 z-40 flex gap-2"
             initial={{ opacity: 0, y: 10 }}
